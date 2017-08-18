@@ -19,11 +19,45 @@
 				function myDrawImageMethod(image) {
 					var width = ctx.canvas.width;
 					var height = ctx.canvas.height;
-					ctx.drawImage(image, 0 ,0,width,600);
+					ctx.drawImage(image, 0 ,0,width,height);
 					// copio pedacito
-					imageData = ctx.getImageData(0,0,100,100);
+					// imageData = ctx.getImageData(0,0,100,100);
+					imageData = ctx.getImageData(0,0,width,height);
+					for (x=0; x<width;x++){
+						for (var y = 0; y < height; y++) {
+							var red = getRed(imageData, x, y);
+							var green = getGreen(imageData, x, y);
+							var blue = getBlue(imageData, x, y);
+							setPixel(imageData, x, y, 255 - red , 255 - green, 255 - blue ,255);
+						}
+					}
+
 					// imprimo ese pedacito en la posicion 200x200
-					ctx.putImageData(imageData, 200 ,200);
+					// ctx.putImageData(imageData, 200 ,200);
+					ctx.putImageData(imageData, 0 ,0);
+				}
+
+				function getRed(imageData, x, y) {
+					var index = (x+y *imageData.width)*4;
+					return imageData.data[index+0];
+				}
+
+				function getGreen(imageData, x, y) {
+					var index = (x+y *imageData.width)*4;
+					return imageData.data[index+1];
+				}
+
+				function getBlue(imageData, x, y) {
+					var index = (x+y *imageData.width)*4;
+					return imageData.data[index+2];
+				}
+
+				function setPixel(imageData, x, y, r, g, b, a) {
+						index = (x+y * imageData.width)*4;
+						imageData.data[index+0] = r;
+						imageData.data[index+1] = g;
+						imageData.data[index+2] = b;
+						imageData.data[index+3] = a;
 				}
 
 
