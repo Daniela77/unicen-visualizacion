@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Tp1-Filtros</title>
+		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+		<nav class="navbar navbar-inverse">
+	  <h1 class="navbar-text .text-center">Easy filter</h1>
+	</nav>
+	<body>
+	<div class="container">
+		  <div class="row">
+		    <div class="col-sm-6">
+					<canvas id="canvas" width="360" height="240" style="border:#000 solid 1px;"></canvas>
+					<br>
+					<input type="file" id="file-input">
+					<br>
+			    <canvas id="canvasFiltro" width="360" height="240" style="border:#000 solid 1px;"></canvas>
+					<a href="#" class="" id="btn-download" download="my-file-name.png"><span class="glyphicon glyphicon-download"></span>Download</a>
+		    </div>
+		    <div class="col-sm-6">
+				 <div class="col-sm-6 col-md-3">
+					 <a href="#" class="thumbnail">
+						 <img src="imagen.jpg" onclick="myDrawImageMethodNegativo(imageFiltro)" alt="negativo">
+						  <p>Negativo</p>
+					 </a>
+				 </div>
+				<div class="col-sm-6 col-md-3">
+					 <a href="#" class="thumbnail">
+						 <img src="imagen.jpg" onclick="myDrawImageMethodByN(imageFiltro)" alt="byn">
+						 <p>Blanco y negro</p>
+					 </a>
+				 </div>
+				<div class="col-sm-6 col-md-3">
+					 <a href="#" class="thumbnail">
+						 <img src="imagen.jpg" onclick="myDrawImageMethodSepia(imageFiltro)" alt="sepia">
+						  <p>Sepia</p>
+					 </a>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img src="imagen.jpg" onclick="myDrawImageMethodBinarizacion(imageFiltro,100)" alt="binarizacion">
+						 <p>Binarizacion</p>
+					</a>
+				</div>
+			 <div class="col-sm-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img src="imagen.jpg" alt="...">
+					</a>
+				</div>
+			 <div class="col-sm-6 col-md-3">
+					<a href="#" class="thumbnail">
+						<img src="imagen.jpg" alt="...">
+					</a>
+			 </div>
+		    </div>
+		  </div>
+		</div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+  <script src="js/filtros.js"></script>
+
+</html>
