@@ -19,6 +19,9 @@ $(function() {
         $img.load(function() {
             ctx.drawImage(this, 0, 0,360,240);
         });
+        $img.load(function() {
+            ctxFiltro.drawImage(this, 0, 0,360,240);
+        });
     }
 });
 
@@ -34,14 +37,11 @@ imageFiltro.src= "imagen.jpg";
 
 image1.onload= function () {
     myDrawImage(this);
+    myDrawFiltro(this);
 }
 
-imageFiltro.onload= function () {
-    ctx.drawImage(this, 0, 0 ,360,240);
-	// myDrawImageMethodNegativo(this);
-	// myDrawImageMethodByN(this);
-	// myDrawImageMethodSepia(this);
-	// myDrawImageMethodBinarizacion(this,100);
+function myDrawFiltro(image1) {
+    ctxFiltro.drawImage(image1, 0, 0 ,360,240);
 
 }
 
@@ -110,6 +110,30 @@ function myDrawImageMethodBinarizacion(imageFiltro,umbral) {
         }
     }
     ctxFiltro.putImageData(imageDataFiltro, 0 ,0);
+}
+
+
+function myDrawImageMethodBlur(imageFiltro) {
+    imageDataFiltro = ctx.getImageData(0,0,360,240);
+    imageDataCopia = ctx.getImageData(0,0,360,240);
+    for (x=0; x<360;x++){
+        for (var y = 0; y < 240; y++) {
+          var red = (getRed(imageDataFiltro,x-1,y-1) + getRed(imageDataFiltro,x-1,y)+
+                    getRed(imageDataFiltro,x-1,y+1) + getRed(imageDataFiltro,x,y-1)+
+                    getRed(imageDataFiltro,x,y+1) + getRed(imageDataFiltro,x+1,y-1)+
+                    getRed(imageDataFiltro,x+1,y) + getRed(imageDataFiltro,x+1,y+1))/9;
+          var green =(getGreen(imageDataFiltro,x-1,y-1) + getGreen(imageDataFiltro,x-1,y)+
+                    getGreen(imageDataFiltro,x-1,y+1) + getGreen(imageDataFiltro,x,y-1)+
+                    getGreen(imageDataFiltro,x,y+1) + getGreen(imageDataFiltro,x+1,y-1)+
+                    getGreen(imageDataFiltro,x+1,y) + getGreen(imageDataFiltro,x+1,y+1))/9;
+          var blue =(getBlue(imageDataFiltro,x-1,y-1) + getBlue(imageDataFiltro,x-1,y)+
+                    getBlue(imageDataFiltro,x-1,y+1) + getBlue(imageDataFiltro,x,y-1)+
+                    getBlue(imageDataFiltro,x,y+1) + getBlue(imageDataFiltro,x+1,y-1)+
+                    getBlue(imageDataFiltro,x+1,y) + getBlue(imageDataFiltro,x+1,y+1))/9;
+          setPixel(imageDataCopia, x, y, red , green, blue ,255);
+        }
+    }
+    ctxFiltro.putImageData(imageDataCopia, 0 ,0);
 }
 
 function getRed(imageData, x, y) {
