@@ -2,8 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Examples for bootstrap-slider plugin">
 		<title>Tp1-Filtros</title>
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+				<link rel="stylesheet" href="css/styleFilter.css">
 	</head>
 		<nav class="navbar navbar-inverse .text-center">
 	  	<h1 class="navbar-text" >Easy filter</h1>
@@ -40,8 +42,16 @@
 				</div>
 				<div class="col-sm-6 col-md-4">
 					<a href="#" class="thumbnail">
-						<img src="imagen.jpg" onclick="myDrawImageMethodBinarizacion(imageFiltro,100)" alt="binarizacion">
+						<img src="imagen.jpg" alt="binarizacion">
+						<input id="nivelBinarizacion" data-slider-id='nivelBinarizacion' type="range" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="?"/>
 						 <p>Binarizacion</p>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<a href="#" class="thumbnail">
+						<img src="imagen.jpg" alt="brillo">
+						<input id="nivelBrillo" data-slider-id='nivelBrillo' type="range" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="?"/>
+						 <p>Brillo</p>
 					</a>
 				</div>
 			 <div class="col-sm-6 col-md-4">

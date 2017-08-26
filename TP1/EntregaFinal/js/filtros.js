@@ -93,7 +93,8 @@ function myDrawImageMethodSepia(imageFiltro) {
     ctxFiltro.putImageData(imageDataFiltro, 0 ,0);
 }
 
-function myDrawImageMethodBinarizacion(imageFiltro,umbral) {
+$('#nivelBinarizacion').change(function myDrawImageMethodBinarizacion(imageFiltro) {
+    var umbral = document.getElementById('nivelBinarizacion').value;
     imageDataFiltro = ctx.getImageData(0,0,360,240);
     for (x=0; x<360;x++){
         for (var y = 0; y < 240; y++) {
@@ -110,7 +111,22 @@ function myDrawImageMethodBinarizacion(imageFiltro,umbral) {
         }
     }
     ctxFiltro.putImageData(imageDataFiltro, 0 ,0);
-}
+});
+
+$('#nivelBrillo').change(function myDrawImageMethodBrillo(imageFiltro) {
+    var nivel = document.getElementById('nivelBrillo').value;
+    imageDataFiltro = ctx.getImageData(0,0,360,240);
+    for (x=0; x<360;x++){
+        for (var y = 0; y < 240; y++) {
+            var red = getRed(imageDataFiltro, x, y)+ parseInt(nivel);
+            var green = getGreen(imageDataFiltro, x, y)+ parseInt(nivel);
+            var blue = getBlue(imageDataFiltro, x, y)+parseInt(nivel);
+            setPixel(imageDataFiltro, x, y, red , green, blue ,255);
+        }
+    }
+    ctxFiltro.putImageData(imageDataFiltro, 0 ,0);
+});
+
 
 function myDrawImageMethodBlur(imageFiltro) {
     imageDataFiltro = ctx.getImageData(0,0,360,240);
