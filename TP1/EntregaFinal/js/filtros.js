@@ -112,25 +112,55 @@ function myDrawImageMethodBinarizacion(imageFiltro,umbral) {
     ctxFiltro.putImageData(imageDataFiltro, 0 ,0);
 }
 
-
 function myDrawImageMethodBlur(imageFiltro) {
     imageDataFiltro = ctx.getImageData(0,0,360,240);
     imageDataCopia = ctx.getImageData(0,0,360,240);
     for (x=0; x<360;x++){
         for (var y = 0; y < 240; y++) {
           var red = (getRed(imageDataFiltro,x-1,y-1) + getRed(imageDataFiltro,x-1,y)+
-                    getRed(imageDataFiltro,x-1,y+1) + getRed(imageDataFiltro,x,y-1)+
+                    getRed(imageDataFiltro,x-1,y+1) + getRed(imageDataFiltro,x,y-1)+getRed(imageDataFiltro,x,y)+
                     getRed(imageDataFiltro,x,y+1) + getRed(imageDataFiltro,x+1,y-1)+
                     getRed(imageDataFiltro,x+1,y) + getRed(imageDataFiltro,x+1,y+1))/9;
           var green =(getGreen(imageDataFiltro,x-1,y-1) + getGreen(imageDataFiltro,x-1,y)+
-                    getGreen(imageDataFiltro,x-1,y+1) + getGreen(imageDataFiltro,x,y-1)+
+                    getGreen(imageDataFiltro,x-1,y+1) + getGreen(imageDataFiltro,x,y-1)+ getGreen(imageDataFiltro,x,y)+
                     getGreen(imageDataFiltro,x,y+1) + getGreen(imageDataFiltro,x+1,y-1)+
                     getGreen(imageDataFiltro,x+1,y) + getGreen(imageDataFiltro,x+1,y+1))/9;
           var blue =(getBlue(imageDataFiltro,x-1,y-1) + getBlue(imageDataFiltro,x-1,y)+
-                    getBlue(imageDataFiltro,x-1,y+1) + getBlue(imageDataFiltro,x,y-1)+
+                    getBlue(imageDataFiltro,x-1,y+1) + getBlue(imageDataFiltro,x,y-1)+ getBlue(imageDataFiltro,x,y)+
                     getBlue(imageDataFiltro,x,y+1) + getBlue(imageDataFiltro,x+1,y-1)+
                     getBlue(imageDataFiltro,x+1,y) + getBlue(imageDataFiltro,x+1,y+1))/9;
           setPixel(imageDataCopia, x, y, red , green, blue ,255);
+        }
+    }
+    ctxFiltro.putImageData(imageDataCopia, 0 ,0);
+}
+
+function myDrawImageMethodDetectarBordes(imageFiltro) {
+    imageDataFiltro = ctx.getImageData(0,0,360,240);
+    imageDataCopia = ctx.getImageData(0,0,360,240);
+    for (x=0; x<360;x++){
+        for (var y = 0; y < 240; y++) {
+          var redx = (getRed(imageDataFiltro,x-1,y-1)*(-1) + getRed(imageDataFiltro,x-1,y+1)*(-1) +
+                    getRed(imageDataFiltro,x,y-1) *(-2) + getRed(imageDataFiltro,x,y+1)*2 +
+                    getRed(imageDataFiltro,x+1,y-1)*(-1) + getRed(imageDataFiltro,x+1,y+1)*1);
+          var greenx =(getGreen(imageDataFiltro,x-1,y-1)*(-1) + getGreen(imageDataFiltro,x-1,y+1)*(-1) +
+                    getGreen(imageDataFiltro,x,y-1) *(-2)+ getGreen(imageDataFiltro,x,y+1)*2 +
+                    getGreen(imageDataFiltro,x+1,y-1)*(-1)+ getGreen(imageDataFiltro,x+1,y+1)*1);
+          var bluex =(getBlue(imageDataFiltro,x-1,y-1)*(-1) + getBlue(imageDataFiltro,x-1,y+1)*(-1) +
+                    getBlue(imageDataFiltro,x,y-1) *(-2)+ getBlue(imageDataFiltro,x,y+1)*2 +
+                    getBlue(imageDataFiltro,x+1,y-1)*(-1)+ getBlue(imageDataFiltro,x+1,y+1)*1);
+          var redy = (getRed(imageDataFiltro,x-1,y-1)*(-1) + getRed(imageDataFiltro,x-1,y)* (-2)+
+                    getRed(imageDataFiltro,x-1,y+1)*(-1) + getRed(imageDataFiltro,x+1,y-1)*1+
+                    getRed(imageDataFiltro,x+1,y)*2 + getRed(imageDataFiltro,x+1,y+1)*1);
+          var greeny=(getGreen(imageDataFiltro,x-1,y-1)*(-1) + getGreen(imageDataFiltro,x-1,y)* (-2)+
+                    getGreen(imageDataFiltro,x-1,y+1)*(-1) + getGreen(imageDataFiltro,x+1,y-1)*1+
+                    getGreen(imageDataFiltro,x+1,y)*2 + getGreen(imageDataFiltro,x+1,y+1)*1);
+          var bluey =(getBlue(imageDataFiltro,x-1,y-1)*(-1) + getBlue(imageDataFiltro,x-1,y)* (-2)+
+                    getBlue(imageDataFiltro,x-1,y+1)*(-1) + getBlue(imageDataFiltro,x+1,y-1)*1+
+                    getBlue(imageDataFiltro,x+1,y)*2 + getBlue(imageDataFiltro,x+1,y+1)*1);
+                    var bynx = (redx + greenx + bluex)/3;
+                    var byny = (redy + greeny + bluey)/3;
+                    setPixel(imageDataCopia, x, y, bynx+byny , bynx+byny, bynx+byny ,255);
         }
     }
     ctxFiltro.putImageData(imageDataCopia, 0 ,0);
