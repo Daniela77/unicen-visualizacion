@@ -2,3 +2,18 @@
 #ex1Slider .slider-selection {
 	background: #BABABA;
 }
+
+h1{
+	font-family: 'Indie Flower', cursive;
+	font-size: 50px;
+}
+
+h1.navbar-text{
+	text-align: center;
+}
+
+p:hover  {
+	text-decoration: none;
+}
+
+span.mysize {font-size: 30px;}
