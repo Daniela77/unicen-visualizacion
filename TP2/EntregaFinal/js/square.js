@@ -1,16 +1,16 @@
-function Square(posx,posy,ancho,alto,color) {
+function Square(posx,posy,radio,alto,color) {
+  this.forma = 'square';
   this.posx=posx;
   this.posy=posy;
-  this.ancho=ancho;
+  this.radio=radio;
   this.alto=alto;
   this.color=color;
 }
 
-
 Square.prototype.dibujar = function () {
   ctx.fillStyle = this.color;
   ctx.beginPath();
-  ctx.rect(this.posx,this.posy,this.ancho,this.alto);
+  ctx.rect(this.posx - this.radio,this.posy- this.radio,this.radio*2, this.radio*2);
   ctx.fill();
   ctx.closePath();
 };

@@ -4,23 +4,28 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>ShapeFunny</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/estiloJuego.css">
 	</head>
 	<nav class="navbar navbar-inverse">
 	  	<h1 class="navbar-text" >Shape Funny</h1>
-		</nav>
-	<body>
-		<div class="container">
-		  <div class="row">
-		    <div class="col-sm-10">
-					<canvas id="canvas" width="900" height="600" />
-				</div>
-			</div>
+	</nav>
+	<body onload="inicio();">
+		<div id="contenedor">
+			<div class="reloj" id="Horas">00</div>
+			<div class="reloj" id="Minutos">:00</div>
+			<div class="reloj" id="Segundos">:00</div>
+			<div class="reloj" id="Centesimas">:00</div>
+			<input type="hidden" class="boton" id="inicio" value="Start &#9658;">
 		</div>
+			<canvas id="canvas" width="1350" height="500" />
 	</body>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/circle.js"></script>
 	<script src="js/square.js"></script>
+	<script src="js/rectangle.js"></script>
+	<script src="js/triangle.js"></script>
+	<script src="js/diamond.js"></script>
 	<script src="js/entregable.js"></script>
 </html>
