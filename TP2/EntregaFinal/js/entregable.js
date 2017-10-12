@@ -5,19 +5,21 @@ var cv = document.getElementById("canvas");
 var inicioX = (cv.width/9);
 var inicioY = (cv.height/9);
 var centesimas = 0;
-var segundos = 0;
-var minutos = 0;
-var horas = 0;
+ var segundos = 0;
+ var minutos = 0;
+ var horas = 0;
+// var centesimas, segundos, minutos,horas = 0;
+var nivel=5;
 objetos= [];
 formas = [];
 partida = [];
 
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < nivel; i++) {
     partida[i]=false;
   }
 
 function actualizar (){
-		ctx.fillStyle = '#97cca3';
+		ctx.fillStyle = '#9eede6';
 		ctx.fillRect(0,0, 1350, 500);
 	  for (var i = 0; i < objetos.length; i++){
 			formas[i].dibujar();
@@ -25,10 +27,39 @@ function actualizar (){
 	}
 }
 
+// $(".jugar").on("click", function(){
+//   $(".nivel").slideDown();
+// })
+
+$("#inicio").on("load", function(){
+	inicio();
+})
+
+$(".facil").on("click", function(){
+  nivel=3;
+	cargar();
+})
+
+$(".medio").on("click", function(){
+  nivel=4;
+  cargar();
+})
+
+$(".dificil").on("click", function(){
+  nivel=6;
+  cargar();
+})
+//
+// document.getElementById("inicio").addEventListener("load", inicio);
+// // document.getElementById("inicio").onload = function() {inicio()};
+
+
 function terminarJuego(){
 clearInterval(control);
-  $("#contenedor").html("Tiempo de Resolucion: " + segundos +" segundos" );
+  $("#contenedor").html("Finalizado en: " + segundos +" segundos" );
 }
+
+
 //Cronometro
 function inicio () {
 	control = setInterval(cronometro,10);
@@ -65,22 +96,38 @@ function cronometro () {
 		Horas.innerHTML = horas;
 	}
 }
+
+function cargar(){
+	inicio();
+	cargarFormas();
+}
 //Cargado de formas
-	var circle2 = new Circle (inicioX,inicioY,50,"#27cb99");
-	var square2 = new Square (inicioX*2,inicioY,50,50,"#c179b4");
+ function cargarFormas() {
+	var originales=[];
+	var copias=[];
+	var circle1 = new Circle (inicioX,inicioY,50,"#27cb99");
+	var square1 = new Square (inicioX*2,inicioY,50,50,"#c179b4");
 	var rectangle1 = new Rectangle(inicioX*3,inicioY,50,70,"#87235f");
 	var triangle1= new Triangle(inicioX,inicioY*3,50,70,"#312387");
-	var diamond= new Diamond(inicioX*2,inicioY*3,50,70,"#22bb36");
+	var diamond1= new Diamond(inicioX*2,inicioY*3,50,70,"#22bb36");
 	// var circle3 = new Circle (inicioX*3,inicioY,50,"#cb2735");
-	objetos.push(circle2,square2,rectangle1,triangle1,diamond);
-	var circle1 = new Circle (inicioX*5,inicioY,50,"#030203");
-	var square1 = new Square (inicioX*6,inicioY,50,70,"#030203");
+	originales.push(circle1,square1,rectangle1,triangle1,diamond1);
+	// objetos.push(circle1,square1,rectangle1,triangle1,diamond1);
+	var circlec = new Circle (inicioX*5,inicioY,50,"#030203");
+	var squarec = new Square (inicioX*6,inicioY,50,70,"#030203");
 	var rectanglec = new Rectangle(inicioX*7,inicioY,50,70,"#030203");
 	var trianglec= new Triangle(inicioX*5,inicioY*3,50,70,"#030203");
 	var diamondc= new Diamond(inicioX*6,inicioY*3,50,70,"#030203");
 	// var circle4 = new Circle (inicioX*7,inicioY,50,"#030203");
-	formas.push(circle1,square1,rectanglec,trianglec,diamondc);
- 	actualizar();
+	copias.push(circlec,squarec,rectanglec,trianglec,diamondc);
+	// formas.push(circlec,squarec,rectanglec,trianglec,diamondc);
+	for (var i = 0; i < nivel; i++){
+		objetos[i]=originales[i];
+		formas[i]=copias[i];
+	}
+	actualizar();
+}
+
 
 	 $("canvas").on( "mousedown", function( event ) {
 		  var x= event.pageX - canvas.offsetLeft;
@@ -122,7 +169,7 @@ $("canvas").on( "mouseup", function( event ) {
       objetos[objetoBase.ficha].posy=formas[i].posy;
       objetoBase.ficha=null;
       var juegoCompleto=true;
-      for (var i = 0; i < partida.length; i++) {
+      for (var i = 0; i < nivel; i++) {
         if (partida[i]==false) {
           juegoCompleto=false;
         }

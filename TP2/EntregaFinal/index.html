@@ -5,17 +5,29 @@
 		<title>ShapeFunny</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/estiloJuego.css">
+		<link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 	</head>
 	<nav class="navbar navbar-inverse">
 	  	<h1 class="navbar-text" >Shape Funny</h1>
 	</nav>
-	<body onload="inicio();">
+	<body>
 		<div id="contenedor">
 			<div class="reloj" id="Horas">00</div>
 			<div class="reloj" id="Minutos">:00</div>
 			<div class="reloj" id="Segundos">:00</div>
 			<div class="reloj" id="Centesimas">:00</div>
+					<!-- <input type="button" class="boton" id="inicio" value="Start &#9658;" onclick="inicio();"> -->
 			<input type="hidden" class="boton" id="inicio" value="Start &#9658;">
+		</div>
+		<div class="comienzo" >
+			<h3>A Jugar!</h3>
+				<!-- <input class="boton jugar" type="button" name="" value="Jugar"> -->
+				<div class="nivel">
+					<input id="" class="boton jugar facil" type="button"  name="" value="Facil">
+					<input id="" class="boton jugar medio" type="button" name="" value="Medio">
+					<input id="" class="boton jugar dificil" type="button"name="" value="Dificil">
+				</div>
 		</div>
 			<canvas id="canvas" width="1350" height="500" />
 	</body>
