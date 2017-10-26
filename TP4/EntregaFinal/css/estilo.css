@@ -1,0 +1,166 @@
+body{
+  background-image: url("../img/images.jpg");
+  overflow: hidden;
+  z-index: 1;
+}
+
+#piso{
+  width:1000px;
+  height: 500px;
+  position:absolute;
+  top:150px;
+  left:0px;
+  background:url("../img/primera-capa.png");
+  z-index: 1000000;
+}
+
+.coin {
+  position:absolute;
+  top:150px;
+  left: 350px;
+  width: 100px;
+  height: 100px;
+  background: url("../img/coin.png") left center;
+  animation: playCoin 0.8s steps(10) infinite;
+  z-index: 1000000;
+}
+
+@keyframes playCoin {
+  100% { background-position: -1000px; }
+}
+
+.walk {
+  background: url("../img/walk.png") left center;
+  animation: play 0.7s steps(20) infinite;
+
+}
+
+.walkRev {
+  background: url("../img/walk.png") left center;
+  transform: rotateY(-180deg);
+  animation: play 0.7s steps(20) infinite;
+
+}
+
+@keyframes play {
+  100% { background-position: -2780px; }
+}
+
+.jump {
+width: 139px;
+height: 151px;
+background: url("../img/jump.png") left center;
+animation: jump 0.7s steps(30) infinite;
+}
+
+@keyframes jump{
+  100% { background-position: -4170px; }
+  0% {transform: scale(0.5,0.5) translateY(0px)}
+  50% {transform: scale(0.5,0.5) translateY(-400px)}
+  100% {transform: scale(0.5,0.5) translateY(0px)}
+}
+
+
+.personaje{
+  position: relative;
+  width: 139px;
+  height: 151px;
+  top:300px;
+  left: 0px;
+  z-index: 1000000;
+  }
+
+.idle{
+
+  background: url("../img/idle.png") left center;
+  animation: idle 0.7s steps(16) infinite;
+  z-index: 1000000;
+}
+
+@keyframes idle{
+  100% { background-position: -2224px; }
+}
+
+#paisaje{
+    position: relative;
+    width:1000px;
+		height: 500px;
+    background:url("../img/BG.png") repeat-X;
+    animation: movebg 9s linear infinite;
+    top:120px;
+    left: 220px;
+    z-index: 100;
+}
+
+.obstaculo{
+    position: relative;
+    width:1000px;
+		height: 500px;
+    background:url("../img/Mushroom_1.png") repeat-X;
+    animation: movimiento 9s linear infinite;
+    top:120px;
+    left: 220px;
+    z-index: 1000000;
+}
+
+.cofre{
+  position: absolute;
+  background:  url("../img/t1.png")no-repeat;
+  background-size:50px 50px;
+  width: 50px;
+  height: 50px;
+  left:1070px;
+  top:500px;
+  z-index: 1000000;
+}
+
+@keyframes movimiento {
+  from {
+      background-position-x: 0;
+      
+  }
+  to {
+      background-position-x: -1920px;
+  }
+}
+
+@keyframes movebg {
+  0% { background-position:550px }
+  100% { background-position:0 }
+}
+
+@keyframes bg {
+  from {
+      background-position-x: 0;
+  }
+  to {
+      background-position-x: -1920px;
+  }
+}
+
+ #img1{
+    width: 50px;
+    height: 50px;
+    background-image: url("../img/img1.png");
+    float:left;
+    position: absolute;
+    left: 1000px;
+    top: 1000px;
+    visibility:visible;
+    z-index: 1000000;
+}
+#img2 {
+    background-image: url('../img/2.png');
+    float: right;
+    position: absolute;
+    visibility:visible;
+    z-index:1000000;
+}
+
+ #img3 {
+    background-image: url('../img/3.png');
+    float:left;
+    position: absolute;
+    visibility:visible;
+    z-index:1000000;
+}
