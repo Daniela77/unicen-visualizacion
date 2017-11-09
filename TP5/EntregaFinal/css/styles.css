@@ -1,0 +1,172 @@
+a, a:hover{
+	text-decoration: none;
+	color: #fff;
+}
+button{
+	cursor: pointer;
+}
+.space{
+	margin: 15px 0px;
+}
+
+.searchHashtag{
+	color: #117a8b;
+	font-style: italic;
+}
+
+.parallax { 
+    /* Set a specific height */
+    height: 300px;
+    animation: headerBg 12s infinite;
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 100% 70%;
+
+}
+.likeHeart,.likedHeart{
+	display:inline-block;
+	width: 50px;
+	height:50px;
+	background: url('../img/web_heart_animation.png');
+	vertical-align:middle;
+}
+.likedHeart{
+	animation: likesHeart 0.5s steps(28) 1 forwards;
+}
+
+
+footer{
+	background-color: #dadada !important;
+}
+
+div.thumbnail{
+	position: relative;
+	float: left;
+	max-width:100%;
+	transform: scale(0);
+	animation: scaleIn 1s 1 forwards;
+	margin-bottom: 20px;
+	opacity: 0.7;
+	border: 1px solid #ddd;
+	-webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+div.thumbnail:hover{
+	opacity: 1;
+	border: 1px solid #ddd;
+	-webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+div.thumbnail img{
+	max-width:inherit;
+}
+
+div.caption{
+	max-width: 100%;
+	font.size: 1em;
+}
+p.singleTweet{
+	display: inline-block;
+}
+
+i.mlike{
+	transform: scale(0);
+	animation: scaleInWithBounce 1s 1 forwards;
+	animation-delay: 1s;
+
+}
+.viewMode{
+	font-size: 40px;
+	color: #c7c7c7;
+	margin: auto 7px;
+}
+
+.viewMode:hover, .grid:hover{
+	color: #989898;
+	cursor: pointer;
+}
+
+.active{
+	color: #989898;
+	border: 1px solid #e0e0e0;
+}
+
+.firstItem{
+	opacity: 1;
+	-webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;	
+}
+
+
+@keyframes likesHeart {  
+  0% {background-position: 0 0; } 
+  100% {background-position: -1400px 0; } /* Must be full height of sprite or skipping will happen.*/
+}
+
+@keyframes headerBg {
+	0% {
+	background-image: url("../img/bg2.jpg");
+}
+	30% {
+	background-image: url("../img/bg2.jpg");
+}
+	40% {
+	background-image: url("../img/bg3.jpg");
+}
+	70% {
+	background-image: url("../img/bg3.jpg");
+}
+	80% {
+	background-image: url("../img/bg4.jpg");
+}
+    95% {
+	background-image: url("../img/bg4.jpg");
+    }
+    100% {
+	background-image: url("../img/bg2.jpg");
+    }    
+}
+@keyframes scaleIn {
+	0% {
+	transform: scale(0);
+    -webkit-transition: -webkit-transform 0.5s;
+}
+    100% {
+    transform: scale(1);
+    -webkit-transition: -webkit-transform 0.5s;
+    }
+}
+
+
+@keyframes scaleInWithBounce {
+	0% {
+	transform: scale(0);
+    -webkit-transition: -webkit-transform 0.5s;
+	}
+	20% {
+	transform: scale(1.2);
+    -webkit-transition: -webkit-transform 0.5s;
+	}
+	40% {
+	transform: scale(0.7);
+    -webkit-transition: -webkit-transform 0.5s;
+	}
+	60% {
+	transform: scale(1.1);
+    -webkit-transition: -webkit-transform 0.5s;
+	}
+	80% {
+	transform: scale(0.9);
+    -webkit-transition: -webkit-transform 0.5s;
+	}
+   
+    100% {
+    transform: scale(1);
+    -webkit-transition: -webkit-transform 0.5s;
+    }
+}
