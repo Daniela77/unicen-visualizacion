@@ -1,0 +1,13 @@
+
+<div  class="col-lg-4 col-sm-3 col-md-6 btn-group btn-group-sm" role="group">
+{{#tweets}}
+          <div class="thumbnail">
+            <img src="{{imagen}}" alt="singleTweet">
+            <div class="caption">
+              <p class="singleTweet"><div id="likeHeart" class="likeHeart"></div> <span id="likesCount">{{likes}}</span> Likes
+              <i class="material-icons">loop</i> 122 Retweets
+              <i class="material-icons">replay</i> 62 Replays</p>
+            </div>
+        </div>
+{{/tweets}}
+ </div>
