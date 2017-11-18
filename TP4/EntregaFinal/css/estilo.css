@@ -1,8 +1,15 @@
 body{
-  background-image: url("../img/images.jpg");
+  background-image: url("../img/images.jpg" );
+  background-size: 100%;
   overflow: hidden;
   z-index: 1;
 }
+/* 
+body{
+  background: url('img/fondo.png') left center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+} */
 
 #piso{
   width:1000px;
@@ -22,11 +29,13 @@ body{
   height: 100px;
   background: url("../img/coin.png") left center;
   animation: playCoin 0.8s steps(10) infinite;
+  transform: scale(0.5);
   z-index: 1000000;
 }
 
 @keyframes playCoin {
-  100% { background-position: -1000px; }
+  100% { background-position: -1000px;
+   }
 }
 
 .walk {
@@ -82,13 +91,13 @@ animation: jump 0.7s steps(30) infinite;
 }
 
 #paisaje{
-    position: relative;
+    position: absolute;
     width:1000px;
 		height: 500px;
     background:url("../img/BG.png") repeat-X;
-    animation: movebg 9s linear infinite;
+    /* animation: movebg 9s linear infinite; */
     top:120px;
-    left: 220px;
+    left: 320px;
     z-index: 100;
 }
 
@@ -96,9 +105,9 @@ animation: jump 0.7s steps(30) infinite;
     position: relative;
     width:1000px;
 		height: 500px;
-    background:url("../img/Mushroom_1.png") repeat-X;
-    animation: movimiento 9s linear infinite;
-    top:120px;
+    background:url("../img/Mushroom_1.png")no-repeat;
+    animation: movimiento 9s linear ease-in;
+    top:320px;
     left: 220px;
     z-index: 1000000;
 }
@@ -109,18 +118,20 @@ animation: jump 0.7s steps(30) infinite;
   background-size:50px 50px;
   width: 50px;
   height: 50px;
-  left:1070px;
-  top:500px;
+  left:370px;
+  top:400px;
   z-index: 1000000;
 }
 
 @keyframes movimiento {
   from {
       background-position-x: 0;
+      transform: translateX(5px);
       
   }
   to {
       background-position-x: -1920px;
+      transform: translateX(5px);
   }
 }
 
@@ -138,29 +149,137 @@ animation: jump 0.7s steps(30) infinite;
   }
 }
 
- #img1{
-    width: 50px;
-    height: 50px;
-    background-image: url("../img/img1.png");
-    float:left;
+ #Sign_2{
+    width: 60px;
+    height:65px;
+    background-image: url("../img/Sign_2.png");
+    /* float:left; */
     position: absolute;
-    left: 1000px;
-    top: 1000px;
+    left: 150px;
+    top: 400px;
     visibility:visible;
-    z-index: 1000000;
+    z-index: 1000100;
 }
-#img2 {
-    background-image: url('../img/2.png');
+
+#Stone {
+    width: 90px;
+    height: 55px;
+    background-image: url('../img/Stone.png');
     float: right;
     position: absolute;
+    left: 450px;
+    top: 430px;
     visibility:visible;
     z-index:1000000;
 }
 
  #img3 {
+
+    width: 150px;
+    height: 150px;
     background-image: url('../img/3.png');
     float:left;
     position: absolute;
+    left: 700px;
+    top: 100px;
     visibility:visible;
     z-index:1000000;
 }
+img{
+  color: white;
+  font-family: 'Bangers', cursive;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+/* img.der{
+  width: 50%;
+  height: 50%;
+  background-image: url('../img/der.png');
+  padding: 0px;
+} */
+
+div.der{
+  background: url('../img/der.png');
+  width: 42px;
+  height: 40px;
+  position:relative;
+  /* font-size: 16px; */
+  color: white;
+  padding: 10px;
+  /* left:-1px; */
+  /* top:0px; */
+  text-shadow:black;
+}
+.up{
+  width: 42px;
+  height: 40px;
+  background: url('../img/up.png');
+  position: relative;
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+  /* left:-1px; */
+  /* top:220px; */
+  text-shadow:black;
+}
+
+ .izq{
+  background: url('../img/izq.png');
+  width: 42px;
+  height: 40px;
+  position: relative;
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+  /* left:-1px; */
+  /* top:260px; */
+  text-shadow:black;
+}
+
+/* .izq{
+  position: absolute;
+  top:130px;
+  left: 5px;
+} */
+.ayuda{
+  position: absolute;
+  top: 200px;
+  left:50px;
+  margin:0px;
+  padding:10px;
+  width: 250px;
+  height: 430px;
+  background: #222222;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2), 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.paso4{
+  position: absolute;
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+  left: 55px;
+  top: 150px;
+  text-shadow:black;
+}
+
+h3.ltr{
+  /* font-size: 16px; */
+  color: white;
+  font-family: 'Bangers', cursive;
+  padding: 10px;
+  text-shadow:black;
+}
+
+h2.ltr{
+
+  color: white;
+  font-family: 'Bangers', cursive;
+  font-size: 40px;
+  margin-bottom: 10px;
+
+}
+
+personaje.idle.stop{
+  transform: scale(0,5);
+ }

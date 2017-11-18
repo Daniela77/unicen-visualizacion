@@ -2,11 +2,18 @@
 function Juego(nombre) {
   var puntaje= 0;
   var jugador= nombre;
+  this.enemigos = [];
 }
 
+var enemigos = [];
 var jugadorG= new Jugador(0,310);
+// enemigos.push(crearEnemigo(1,900,440,-1));
+// enemigos.push(crearEnemigo(2,50,300,1));
 
 Juego.prototype.jugar= function () {
+  // var jugadorG= new Jugador(0,310);
+
+
 
 };
 
