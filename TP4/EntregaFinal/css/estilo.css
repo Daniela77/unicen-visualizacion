@@ -4,12 +4,6 @@ body{
   overflow: hidden;
   z-index: 1;
 }
-/* 
-body{
-  background: url('img/fondo.png') left center;
-  background-size: 100%;
-  background-repeat: no-repeat;
-} */
 
 #piso{
   width:1000px;
@@ -19,6 +13,55 @@ body{
   left:0px;
   background:url("../img/primera-capa.png");
   z-index: 1000000;
+  margin-left: 215px;
+}
+
+#paisaje{
+  background-image:url("../img/BG.png") ;
+  animation: movebg 7s linear infinite;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.fondo{
+position: absolute;
+width:1000px;
+height: 500px;
+background-position: 0 0;
+}
+
+#juego{
+position: relative;
+}
+
+#juego div{
+position:absolute;
+}
+
+div#paisaje.fondo{
+margin-left: 200px;
+}
+
+.mush{
+  position: relative;
+  width:1000px;
+  height: 500px;
+  background:url("../img/Mushroom_1.png")no-repeat;
+  animation: movimiento 9s linear ease-in;
+  top:450px;
+  left: 920px;
+  z-index: 1000000;
+}
+
+.cofre{
+position: absolute;
+background:  url("../img/t1.png")no-repeat;
+background-size:50px 50px;
+width: 50px;
+height: 50px;
+left:370px;
+top:400px;
+z-index: 1000000;
 }
 
 .coin {
@@ -36,6 +79,27 @@ body{
 @keyframes playCoin {
   100% { background-position: -1000px;
    }
+}
+
+.personaje{
+  position: relative;
+  width: 139px;
+  height: 151px;
+  top:300px;
+  left: 300px;
+  z-index: 1000000;
+  margin-left: 220px;
+  }
+
+.idle{
+
+  background: url("../img/idle.png") left center;
+  animation: idle 0.7s steps(16) infinite;
+  z-index: 1000000;
+}
+
+@keyframes idle{
+  100% { background-position: -2224px; }
 }
 
 .walk {
@@ -67,61 +131,22 @@ animation: jump 0.7s steps(30) infinite;
   0% {transform: scale(0.5,0.5) translateY(0px)}
   50% {transform: scale(0.5,0.5) translateY(-400px)}
   100% {transform: scale(0.5,0.5) translateY(0px)}
+  /* 100% { background-position: -4170px; }
+  0% {transform:  translateY(0px) translateX(50px)}
+  50% {transform:  translateY(-300px) translateX(100px)}
+  100% {transform: translateX(150px) translateY(0px) ; background-position: -4170px;} */
 }
 
-
-.personaje{
-  position: relative;
-  width: 139px;
-  height: 151px;
-  top:300px;
-  left: 0px;
-  z-index: 1000000;
-  }
-
-.idle{
-
-  background: url("../img/idle.png") left center;
-  animation: idle 0.7s steps(16) infinite;
-  z-index: 1000000;
-}
-
-@keyframes idle{
-  100% { background-position: -2224px; }
-}
-
-#paisaje{
-    position: absolute;
-    width:1000px;
-		height: 500px;
-    background:url("../img/BG.png") repeat-X;
-    /* animation: movebg 9s linear infinite; */
-    top:120px;
-    left: 320px;
-    z-index: 100;
-}
-
-.obstaculo{
-    position: relative;
-    width:1000px;
-		height: 500px;
-    background:url("../img/Mushroom_1.png")no-repeat;
-    animation: movimiento 9s linear ease-in;
-    top:320px;
-    left: 220px;
+.dead{
+    background: url("../img/dead.png") left center;
+    animation: dead 1s steps(30) infinite;
+    top:350px;
     z-index: 1000000;
-}
-
-.cofre{
-  position: absolute;
-  background:  url("../img/t1.png")no-repeat;
-  background-size:50px 50px;
-  width: 50px;
-  height: 50px;
-  left:370px;
-  top:400px;
-  z-index: 1000000;
-}
+  }
+  
+  @keyframes dead{
+    100% { background-position: -4530px; }
+  }
 
 @keyframes movimiento {
   from {
@@ -135,9 +160,13 @@ animation: jump 0.7s steps(30) infinite;
   }
 }
 
-@keyframes movebg {
+/* @keyframes movebg {
   0% { background-position:550px }
   100% { background-position:0 }
+} */
+
+@keyframes movebg {
+  100% {background-position: -1000px; }
 }
 
 @keyframes bg {
@@ -155,19 +184,19 @@ animation: jump 0.7s steps(30) infinite;
     background-image: url("../img/Sign_2.png");
     /* float:left; */
     position: absolute;
-    left: 150px;
+    left: 350px;
     top: 400px;
     visibility:visible;
     z-index: 1000100;
 }
 
-#Stone {
+.Stone {
     width: 90px;
     height: 55px;
     background-image: url('../img/Stone.png');
     float: right;
     position: absolute;
-    left: 450px;
+    left: 1000px;
     top: 430px;
     visibility:visible;
     z-index:1000000;
@@ -185,20 +214,15 @@ animation: jump 0.7s steps(30) infinite;
     visibility:visible;
     z-index:1000000;
 }
+
 img{
   color: white;
   font-family: 'Bangers', cursive;
   font-size: 40px;
   margin-bottom: 10px;
 }
-/* img.der{
-  width: 50%;
-  height: 50%;
-  background-image: url('../img/der.png');
-  padding: 0px;
-} */
 
-div.der{
+.der{
   background: url('../img/der.png');
   width: 42px;
   height: 40px;
@@ -210,6 +234,7 @@ div.der{
   /* top:0px; */
   text-shadow:black;
 }
+
 .up{
   width: 42px;
   height: 40px;
@@ -228,10 +253,11 @@ div.der{
   width: 42px;
   height: 40px;
   position: relative;
+  display: inline-block;
   font-size: 16px;
   color: white;
   padding: 10px;
-  /* left:-1px; */
+  /* left:-10px; */
   /* top:260px; */
   text-shadow:black;
 }
@@ -243,43 +269,61 @@ div.der{
 } */
 .ayuda{
   position: absolute;
-  top: 200px;
+  top: 80px;
   left:50px;
   margin:0px;
   padding:10px;
   width: 250px;
-  height: 430px;
+  height: 550px;
   background: #222222;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2), 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
-.paso4{
+.indicaciones{
   position: absolute;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   padding: 10px;
   left: 55px;
-  top: 150px;
+  top: 50px;
   text-shadow:black;
 }
 
 h3.ltr{
   /* font-size: 16px; */
   color: white;
-  font-family: 'Bangers', cursive;
+  font-family: 'Francois One', sans-serif;
+  padding: 10px;
+  text-shadow:black;
+}
+
+h4.ltr{
+  /* font-size: 16px; */
+  color: white;
+  font-family: 'Francois One', sans-serif;
   padding: 10px;
   text-shadow:black;
 }
 
 h2.ltr{
-
+  text-align: center;
   color: white;
   font-family: 'Bangers', cursive;
-  font-size: 40px;
+  font-size: 35px;
   margin-bottom: 10px;
-
 }
 
-personaje.idle.stop{
-  transform: scale(0,5);
- }
+#puntaje{
+  font-size: 16px;
+  color: rgb(14, 13, 13);
+  font-family: 'Bangers', cursive;
+  padding: 10px;
+  text-shadow:black;
+  position: relative;
+  z-index: 1000;
+  transform: translate(200px);
+}
+
+.btnJugar{
+  margin: 30px 70px;
+}

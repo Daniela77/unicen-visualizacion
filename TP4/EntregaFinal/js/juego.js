@@ -1,27 +1,13 @@
-
 function Juego(nombre) {
   var puntaje= 0;
   var jugador= nombre;
-  this.enemigos = [];
 }
 
-var enemigos = [];
-var jugadorG= new Jugador(0,310);
-// enemigos.push(crearEnemigo(1,900,440,-1));
-// enemigos.push(crearEnemigo(2,50,300,1));
-
-Juego.prototype.jugar= function () {
-  // var jugadorG= new Jugador(0,310);
-
-
-
-};
-
-
+var jugadorG= new Jugador(0,320);
+var id;
+var puntaje = 0;
+var colision = false;
 var j = new Juego("Dani");
-function update() {
-  //jugadorG.update();
-}
 
 function draw() {
   switch (jugadorG.state) {
@@ -37,16 +23,24 @@ function draw() {
     case "jump":
       jugadorG.draw("personaje jump");
       break;
+    case "dead":
+      jugadorG.draw("personaje dead");
+    break;
+
     default:
       jugadorG.draw("personaje idle");
   }
 
 }
 
+// btnJugar.addEventListener("onclick",mainLoop);
+
 function mainLoop() {
+  id = setInterval(function(){
     update();
     draw();
-    requestAnimationFrame(mainLoop);
+    // requestAnimationFrame(mainLoop);
+  }, 50);
 }
 
 document.addEventListener('keydown', event => {
@@ -64,7 +58,65 @@ document.addEventListener('keydown', event => {
 }, false);
 
 document.addEventListener('keyup', event => {
-jugadorG.state = "idle";
+jugadorG.state = "walk";
 });
 
 requestAnimationFrame(mainLoop);
+
+function isCollision(object){
+var personaje = $("#girl");
+ var cy= personaje.offset().top;
+ var cx = personaje.offset().left;
+ var ch = personaje.outerHeight();
+ var cw = personaje.outerWidth();
+
+ var element = $("#"+object);
+ var ey = element.offset().top;
+ var ex = element.offset().left;
+ var eh = element.outerHeight();
+ var ew = element.outerWidth();
+
+ return!(
+   ((cy + ch) < (ey)) ||
+   (cy> (ey + eh)) ||
+   ((cx + cw) < ex) ||
+   (cx > (ex + ew)));
+
+ }
+
+ function enemigoUpdate(px){
+  var enemigo =  $("#enemigo");
+   if(parseInt( enemigo.offset().left)>-10){
+    enemigo.offset({left: parseInt(enemigo.offset().left)-px});
+   }else{
+    var distanciaX = Math.floor((Math.random()) + innerWidth);
+     this.updateDistance("enemigo",distanciaX);
+     colision = false;
+   }
+ }
+
+ function updateDistance(object,distanciaX,distanciaY){
+  var div = document.getElementById(object);
+   if(object == 'enemigo'){
+     div.style.left = parseInt(div.style.left,5) + distanciaX+'px';
+   }
+ }
+
+ function update(){
+   this. enemigoUpdate(10);
+   puntaje += 1;
+   document.getElementById('puntajeJuego').innerHTML = puntaje;
+   if(this.isCollision('enemigo')){
+     jugadorG.state = "dead";
+     setTimeout(function() {this.gameover();}, 1000);
+   }
+ }
+
+ function gameover(){
+   document.getElementById('enemigo').style.webkitAnimationPlayState = 'paused';
+   document.getElementById('paisaje').style.webkitAnimationPlayState = 'paused';
+   document.getElementById('girl').style.webkitAnimationPlayState = 'paused';
+   clearInterval(id);
+   document.getElementById('gameOver').style.visibility = 'visible';
+   document.getElementById('gameOver').style.zIndex = '1200000000';
+ }

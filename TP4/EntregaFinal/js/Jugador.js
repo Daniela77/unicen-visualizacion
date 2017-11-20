@@ -3,7 +3,7 @@ class Jugador {
     this.x = x;
     this.y = y;
     this.div = document.getElementById('girl');
-    this.state = "idle";
+    this.state = "walk";
   }
 
   draw (anim) {
@@ -19,7 +19,5 @@ class Jugador {
   setY(y) {
     this.y = y;
   }
-
-  
 
 }
