@@ -66,9 +66,7 @@ requestAnimationFrame(mainLoop);
 function isColision(object){
 var personaje = $("#girl");
 var cx = personaje.offset().left;
-console.log("ofsset left:"+cx);
 var cy= personaje.offset().top;
-console.log("ofsset top:"+cy);
 var ch = personaje.outerHeight();
 var cw = personaje.outerWidth();
 
@@ -88,7 +86,7 @@ var cw = personaje.outerWidth();
 
  function enemigoUpdate(px){
   var enemigo =  $("#enemigo");
-   if(parseInt( enemigo.offset().left)>40){
+   if(parseInt( enemigo.offset().left)>30){
     enemigo.offset({left: parseInt(enemigo.offset().left)-px});
    }else{
     var distanciaX = Math.floor((Math.random()) + innerWidth);
@@ -97,7 +95,7 @@ var cw = personaje.outerWidth();
    }
  }
 
- function updateDistancia(object,distanciaX,distanciaY){
+ function updateDistancia(object,distanciaX){
   var div = document.getElementById(object);
    if(object == 'enemigo'){
      div.style.left = parseInt(div.style.left,5) + distanciaX+'px';
@@ -105,7 +103,7 @@ var cw = personaje.outerWidth();
  }
 
  function update(){
-   this. enemigoUpdate(8);
+   this. enemigoUpdate(3);
    puntaje += 1;
    document.getElementById('puntajeJuego').innerHTML = puntaje;
    if(this.isColision('enemigo')){
@@ -118,7 +116,7 @@ var cw = personaje.outerWidth();
    document.getElementById('enemigo').style.webkitAnimationPlayState = 'paused';
    document.getElementById('paisaje').style.webkitAnimationPlayState = 'paused';
    document.getElementById('girl').style.webkitAnimationPlayState = 'paused';
+   document.getElementById('flor').style.webkitAnimationPlayState = 'paused';
    clearInterval(id);
    document.getElementById('gameOver').style.visibility = 'visible';
-  //  document.getElementById('gameOver').style.zIndex = '1200000000';
  }

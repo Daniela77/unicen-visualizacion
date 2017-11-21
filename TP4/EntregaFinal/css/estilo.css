@@ -46,7 +46,7 @@ margin-left: 200px;
   position: relative;
   width:1000px;
   height: 500px;
-  background:url("../img/Mushroom_1.png")no-repeat;
+  background:url("../img/Mushroom_1.png") no-repeat;
   animation: movimiento 9s linear ease-in;
   top:450px;
   left: 920px;
@@ -102,10 +102,11 @@ z-index: 1000000;
   position: relative;
   width: 139px;
   height: 151px;
-  /* top:300px;
-  left: 300px; */
+  top:300px;
+  left: 300px;
+  transform: translate(200px,0);
   z-index: 1000000;
-  margin-left: 220px;
+  margin-left: 520px;
   }
 
 .idle{
@@ -141,7 +142,7 @@ position: relative;
 width: 139px;
 height: 151px;
 background: url("../img/jump.png") left center;
-animation: jump 0.7s steps(30) infinite;
+animation: jump 2s steps(30) infinite;
 }
 
 @keyframes jump{
@@ -165,8 +166,8 @@ animation: jump 0.7s steps(30) infinite;
 }
 
 .dead{
-    background: url("../img/dead.png") left center;
-    animation: dead 1s steps(30) infinite;
+    background: url("../img/dead.png") ;
+    animation: dead 1s steps(30);
     width: 151px;
     height: 130px;
     top:400px;
@@ -198,14 +199,14 @@ animation: jump 0.7s steps(30) infinite;
   100% {background-position: -1000px; }
 }
 
-@keyframes bg {
+/* @keyframes bg {
   from {
       background-position-x: 0;
   }
   to {
       background-position-x: -1920px;
   }
-}
+} */
 
  #Sign_2{
     width: 60px;
@@ -219,12 +220,31 @@ animation: jump 0.7s steps(30) infinite;
     z-index: 1000100;
 }
 
+/* .arbol{
+  width: 282px;
+  height:301px;
+  background-image: url("../img/Tree_2.png"); */
+  /* float:left; */
+  /* position: absolute; */
+  /* left: 350px;
+  top: 200px; */
+  /* animation: movetree 5s ease-in infinite; */
+  /* overflow: hidden;
+  visibility:visible;
+  z-index: 1000100;
+} */
+
+/* @keyframes movetree {
+  100% {background-position: -282px; }
+} */
+
+
 .Stone {
     width: 90px;
     height: 55px;
     background-image: url('../img/Stone.png');
-    float: right;
-    position: absolute;
+    /* float: right;
+    position: absolute; */
     left: 1000px;
     top: 430px;
     visibility:visible;
@@ -373,6 +393,29 @@ h2.ltr{
 .btnJugar{
   margin: 30px 70px;
 }
+
+#gameOver{
+  position: absolute;
+  top: -160px;
+  left: 410px;
+  margin: 100px;
+  width: 600px;
+  height: 250px;
+  padding: 10px;
+  visibility: hidden;
+  font-family: 'Bangers', cursive;
+  font-size: 80px;
+  color: rgb(255, 255, 255);
+  /* background-color: #000000; */
+  transform: translate(0,300px);
+  background: #222222;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2), 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  z-index: 1000100;
+}
+p.gOver{
+  margin: 60px;
+}
+
 
 /* element.style {
   left: 0px;
