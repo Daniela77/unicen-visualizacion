@@ -63,12 +63,14 @@ jugadorG.state = "walk";
 
 requestAnimationFrame(mainLoop);
 
-function isCollision(object){
+function isColision(object){
 var personaje = $("#girl");
- var cy= personaje.offset().top;
- var cx = personaje.offset().left;
- var ch = personaje.outerHeight();
- var cw = personaje.outerWidth();
+var cx = personaje.offset().left;
+console.log("ofsset left:"+cx);
+var cy= personaje.offset().top;
+console.log("ofsset top:"+cy);
+var ch = personaje.outerHeight();
+var cw = personaje.outerWidth();
 
  var element = $("#"+object);
  var ey = element.offset().top;
@@ -86,16 +88,16 @@ var personaje = $("#girl");
 
  function enemigoUpdate(px){
   var enemigo =  $("#enemigo");
-   if(parseInt( enemigo.offset().left)>-10){
+   if(parseInt( enemigo.offset().left)>40){
     enemigo.offset({left: parseInt(enemigo.offset().left)-px});
    }else{
     var distanciaX = Math.floor((Math.random()) + innerWidth);
-     this.updateDistance("enemigo",distanciaX);
+     this.updateDistancia("enemigo",distanciaX);
      colision = false;
    }
  }
 
- function updateDistance(object,distanciaX,distanciaY){
+ function updateDistancia(object,distanciaX,distanciaY){
   var div = document.getElementById(object);
    if(object == 'enemigo'){
      div.style.left = parseInt(div.style.left,5) + distanciaX+'px';
@@ -103,10 +105,10 @@ var personaje = $("#girl");
  }
 
  function update(){
-   this. enemigoUpdate(10);
+   this. enemigoUpdate(8);
    puntaje += 1;
    document.getElementById('puntajeJuego').innerHTML = puntaje;
-   if(this.isCollision('enemigo')){
+   if(this.isColision('enemigo')){
      jugadorG.state = "dead";
      setTimeout(function() {this.gameover();}, 1000);
    }
@@ -118,5 +120,5 @@ var personaje = $("#girl");
    document.getElementById('girl').style.webkitAnimationPlayState = 'paused';
    clearInterval(id);
    document.getElementById('gameOver').style.visibility = 'visible';
-   document.getElementById('gameOver').style.zIndex = '1200000000';
+  //  document.getElementById('gameOver').style.zIndex = '1200000000';
  }

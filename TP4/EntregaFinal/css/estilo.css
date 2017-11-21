@@ -18,7 +18,7 @@ body{
 
 #paisaje{
   background-image:url("../img/BG.png") ;
-  animation: movebg 7s linear infinite;
+  animation: movebg 5s linear infinite;
   overflow: hidden;
   z-index: 100;
 }
@@ -81,12 +81,29 @@ z-index: 1000000;
    }
 }
 
+.flor {
+  position:absolute;
+  left: 1000px;
+  top: 330px;
+  width: 256px;
+  height: 256px;
+  background: url("../img/flor.png") left center;
+  animation: flor 1s steps(6) infinite;
+  transform: scale(0.5);
+  z-index: 1000000;
+}
+
+@keyframes flor {
+  100% { background-position: -1536px;
+   }
+}
+
 .personaje{
   position: relative;
   width: 139px;
   height: 151px;
-  top:300px;
-  left: 300px;
+  /* top:300px;
+  left: 300px; */
   z-index: 1000000;
   margin-left: 220px;
   }
@@ -120,6 +137,7 @@ z-index: 1000000;
 }
 
 .jump {
+position: relative;
 width: 139px;
 height: 151px;
 background: url("../img/jump.png") left center;
@@ -127,10 +145,19 @@ animation: jump 0.7s steps(30) infinite;
 }
 
 @keyframes jump{
-  100% { background-position: -4170px; }
-  0% {transform: scale(0.5,0.5) translateY(0px)}
-  50% {transform: scale(0.5,0.5) translateY(-400px)}
-  100% {transform: scale(0.5,0.5) translateY(0px)}
+  0%{transform: translate(200px,-0px); }
+  
+    25%{transform: translate(200px,-100px); }
+  
+    50%{transform: translate(200px,-250px); }
+  
+    75%{transform: translate(200px,-150px); }
+  
+    100%{transform: translate(200px,-0px);background-position: -4170; }
+  /* 100% { background-position: -4170px; }
+  0% {transform:  translate(200px,-5px)}
+  50% {transform: translate(200px,-400px)}
+  100% {transform:translate(200px,-5px)} */
   /* 100% { background-position: -4170px; }
   0% {transform:  translateY(0px) translateX(50px)}
   50% {transform:  translateY(-300px) translateX(100px)}
@@ -140,7 +167,9 @@ animation: jump 0.7s steps(30) infinite;
 .dead{
     background: url("../img/dead.png") left center;
     animation: dead 1s steps(30) infinite;
-    top:350px;
+    width: 151px;
+    height: 130px;
+    top:400px;
     z-index: 1000000;
   }
   
@@ -215,12 +244,29 @@ animation: jump 0.7s steps(30) infinite;
     z-index:1000000;
 }
 
-img{
+.logo{
+  width: 50px;
+  height: 50px;
+  color: white;
+  font-family: 'Bangers', cursive;
+  font-size: 40px;
+  background-image: url("../img/logoR.png");
+  float:left;
+  padding-left: 60px;
+  text-shadow:black;
+  position: relative;
+  top:0px;
+  left: 1080px;
+}
+
+/* img{
+  width: 215px;
+  height: 215px;
   color: white;
   font-family: 'Bangers', cursive;
   font-size: 40px;
   margin-bottom: 10px;
-}
+} */
 
 .der{
   background: url('../img/der.png');
@@ -314,7 +360,7 @@ h2.ltr{
 }
 
 #puntaje{
-  font-size: 16px;
+  font-size: 35px;
   color: rgb(14, 13, 13);
   font-family: 'Bangers', cursive;
   padding: 10px;
@@ -327,3 +373,9 @@ h2.ltr{
 .btnJugar{
   margin: 30px 70px;
 }
+
+/* element.style {
+  left: 0px;
+  top: 350px;
+  animation-play-state: paused;
+} */
