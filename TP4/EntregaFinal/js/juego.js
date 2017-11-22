@@ -1,5 +1,6 @@
 function Juego(nombre) {
   var puntaje= 0;
+  var vidas= 3;
   var jugador= nombre;
 }
 
@@ -40,7 +41,7 @@ function mainLoop() {
     update();
     draw();
     // requestAnimationFrame(mainLoop);
-  }, 50);
+  }, 20);
 }
 
 document.addEventListener('keydown', event => {
@@ -103,10 +104,17 @@ var cw = personaje.outerWidth();
  }
 
  function update(){
-   this. enemigoUpdate(3);
+   this. enemigoUpdate(8);
    puntaje += 1;
    document.getElementById('puntajeJuego').innerHTML = puntaje;
-   if(this.isColision('enemigo')){
+  //  if(this.isColision('enemigo')&&(jugadorG.vidas >= 1)&&(!colision)){
+  //   colision = true;
+  //   document.getElementById('vidas'+jugadorG.vidas).src='img/vidasperdidas.png';
+  //   jugadorG.vidasjugadorG.vidas-1;
+  // }
+  // else 
+  // if(this.isColision('enemigo')&&(jugadorG.vidas == 0)){
+    if(this.isColision('enemigo')){
      jugadorG.state = "dead";
      setTimeout(function() {this.gameover();}, 1000);
    }
